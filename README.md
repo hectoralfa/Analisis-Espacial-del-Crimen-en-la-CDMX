@@ -1,19 +1,24 @@
 # Spatial-Crime-Analysis-CDMX
-Análisis geoespacial de delitos en la Ciudad de México utilizando KDE sobre red vial y  Getis-Ord Gi*. El proyecto genera mapas de hotspots y coldspots basados en puntos de crimen, empleando una metodología de análisis espacial en redes urbanas.
-# Homicidios en la Red Vial de México 🚨🗺️
+
+Análisis geoespacial de delitos en la Ciudad de México utilizando KDE sobre red vial y Getis-Ord Gi*.  
+El proyecto genera mapas de **hotspots** y **coldspots** de crimen a partir de puntos de robo, empleando una metodología de análisis espacial en redes urbanas.
+
+---
+
+## 🚨 Tablero interactivo
 
 > 📊 **Tablero interactivo disponible aquí:**  
 > 👉 [🔗 HAZ CLIC PARA VER EL TABLERO](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
 
 o utiliza este botón:
 
-[![Ver tablero interactivo](https://img.shields.io/badge/Ver%20tablero-Interactivo-blue?style=for-the-badge&logo=Tableau)](TU_URL_DEL_TABLERO)
+[![Ver tablero interactivo](https://img.shields.io/badge/Ver%20tablero-Interactivo-blue?style=for-the-badge&logo=Tableau)](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
 
 ---
 
 ## 🧩 Descripción general
 
-Este proyecto analiza la **distribución espacial de homicidios en México** utilizando la **red vial** como soporte principal. A través de técnicas de:
+Este proyecto analiza la **distribución espacial de delitos de robo en la Ciudad de México** utilizando la **red vial** como soporte principal. A través de técnicas de:
 
 - Análisis de red vial  
 - Segmentación en *lixels*  
@@ -21,14 +26,13 @@ Este proyecto analiza la **distribución espacial de homicidios en México** uti
 - **Kernel Density Estimation (KDE)** sobre red  
 - Estadístico **Getis-Ord Gi\*** para identificación de *hotspots*  
 
-se construye un **tablero interactivo** que permite explorar zonas con mayor riesgo de homicidios a lo largo de las vías de comunicación del país.
+se construye un **tablero interactivo** que permite explorar zonas con mayor riesgo en los robos más comunes:  
+**robo a transporte/pasajero, robo en vía pública y robo a negocio** a lo largo de las vialidades de la CDMX.
 
 El objetivo es aportar una herramienta útil para:
 
-- **Investigación académica y postgrados**
 - **Diseño y evaluación de políticas públicas**
 - **Áreas de seguridad, análisis de riesgo y planeación urbana**
-- **Reclutadores y equipos de datos** interesados en ciencia de datos aplicada a problemas públicos.
 
 ---
 
@@ -36,12 +40,12 @@ El objetivo es aportar una herramienta útil para:
 
 Desarrollar una **herramienta digital geoespacial** que:
 
-- Recopile, procese y analice información sobre **redes viales y homicidios**.  
+- Recopile, procese y analice información sobre **redes viales y delitos de robo**.  
 - Estime la **concentración de eventos delictivos** sobre la red vial, no solo sobre el espacio continuo.  
 - Identifique **tramos de calle** con riesgo elevado mediante técnicas estadísticas (Getis-Ord Gi\*).  
 - Permita **visualizar los resultados** de forma clara y accesible mediante un **tablero interactivo**.
 
-> 🔗 Acceso rápido: [Ver tablero interactivo](TU_URL_DEL_TABLERO)
+> 🔗 Acceso rápido: [Ver tablero interactivo](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
 
 ---
 
@@ -63,18 +67,15 @@ En lugar de analizar solo puntos en un mapa, este proyecto considera **por dónd
 
 ## 🗺️ Análisis de la red vial
 
-La base del proyecto es la **red vial de México**, construida a partir de:
+La base del proyecto es la **red vial de la CDMX**, construida a partir de:
 
 - Información del **INEGI**  
-- Datos complementarios de **OpenStreetMap (OSM)**
 
-Ambas fuentes se integran para reducir vacíos en la red vial, corrigiendo problemas como:
+Se realiza un preprocesamiento para:
 
-- Segmentos desconectados  
-- Tramos faltantes  
-- Inconsistencias topológicas
-
-Este preprocesamiento se realiza principalmente en **QGIS**, aprovechando su capacidad para el manejo de datos geoespaciales.
+- Corregir segmentos desconectados  
+- Homogeneizar la red  
+- Preparar los datos para el análisis sobre *lixels* y grafos
 
 ---
 
@@ -85,7 +86,7 @@ Una vez limpia la red, se divide en **segmentos pequeños y uniformes** llamados
 ¿Por qué es útil?
 
 - Permite analizar la red a una escala más **fina y homogénea**.  
-- Facilita calcular **densidades** de homicidios por tramo.  
+- Facilita calcular **densidades de robos por tramo**.  
 - Ayuda a localizar con mayor precisión **en qué parte de una calle se concentran los eventos**.
 
 Cada lixel se convierte en una unidad de análisis sobre la cual se calculan indicadores de riesgo.
@@ -101,7 +102,7 @@ La red vial también se representa como un **grafo**:
 
 Esta representación permite:
 
-- Modelar la **conectividad** de la ciudad/región  
+- Modelar la **conectividad** de la ciudad  
 - Entender cómo se pueden **propagar fenómenos** a lo largo de la red  
 - Integrar métricas de red (distancias, accesibilidad, rutas mínimas, etc.)
 
@@ -109,33 +110,33 @@ Esta representación permite:
 
 ## 📈 Kernel Density Estimation (KDE) sobre la red vial
 
-Para analizar si los homicidios se concentran en ciertas zonas, se utiliza **Kernel Density Estimation (KDE)**, pero en lugar de aplicarlo al espacio continuo, se aplica:
+Para analizar si los robos se concentran en ciertas zonas, se utiliza **Kernel Density Estimation (KDE)**, pero en lugar de aplicarlo al espacio continuo, se aplica:
 
-> ✅ **Directamente sobre la red vial** utilizando los *lixels* como soporte.
+> ✅ **Directamente sobre la red vial**, utilizando los *lixels* como soporte.
 
 ### ¿Qué hace KDE en este proyecto?
 
-- Cada homicidio genera una “mancha” de influencia sobre la red.  
-- Si varias manchas se superponen en un mismo tramo, se estima una **mayor densidad de homicidios**.  
-- El resultado es un mapa de **intensidad de homicidios por tramo de calle**.
+- Cada evento de robo genera una “mancha” de influencia sobre la red.  
+- Si varias manchas se superponen en un mismo tramo, se estima una **mayor densidad de robos**.  
+- El resultado es un mapa de **intensidad de robos por tramo de calle**.
 
 Se consideran:
 
 - **Ancho de banda (*bandwidth*)**: controla el tamaño de la mancha.  
 - **Tipo de kernel**: en este caso, se utiliza el **kernel de Epanechnikov**, que:
   - Minimiza el **error cuadrático medio integrado (MISE)**  
-  - Tiene **soporte compacto**, lo que reduce el costo computacional.
+  - Tiene **soporte compacto**, lo que ayuda a reducir el costo computacional.
 
 ---
 
-## 🔥 Identificación de hotspots: Getis-Ord Gi\***
+## 🔥 Identificación de hotspots: Getis-Ord Gi\*
 
 KDE muestra dónde hay **concentraciones altas**, pero no dice si estas son **estadísticamente significativas**.
 
 Para eso se utiliza el estadístico **Getis-Ord Gi\*** sobre los lixels, con el fin de:
 
 - Distinguir entre zonas que solo “parecen” densas  
-- Y aquellas que, **estadísticamente**, tienen **muchos más homicidios de lo esperado** en comparación con sus vecinos.
+- Y aquellas que, **estadísticamente**, tienen **muchos más robos de lo esperado** en comparación con sus vecinos.
 
 El resultado se visualiza en forma de:
 
@@ -148,18 +149,16 @@ Estos resultados alimentan el **tablero interactivo** para una interpretación m
 
 ## 🧪 Datos utilizados
 
-La base de homicidios se construyó a partir de:
+La base de delitos se construyó a partir de:
 
-- Registros de homicidios de **fiscalías estatales**  
-- Incluye **todos los tipos de homicidio**, sin distinguir modalidad  
-- Cobertura: **32 estados de México**  
-- Periodo: **enero–marzo de 2025**  
-- Total de registros: **12,669 homicidios**
+- Registros de las carpetas de investigación de la **Fiscalía de la Ciudad de México**  
+- Incluye **tres tipos de robo:** robo a transeúnte, robo a pasajero y robo a negocio  
+- Cobertura: **Ciudad de México**  
+- Periodo: **enero–diciembre de 2023**  
 
 La red vial proviene de:
 
-- **INEGI** – [https://www.inegi.org.mx](https://www.inegi.org.mx)  
-- **OpenStreetMap** – [https://www.openstreetmap.org](https://www.openstreetmap.org)
+- **INEGI** – [https://www.inegi.org.mx](https://www.inegi.org.mx)
 
 ---
 
@@ -167,30 +166,36 @@ La red vial proviene de:
 
 Algunas de las herramientas utilizadas:
 
-- 🗺️ **QGIS** – limpieza y preparación de la red vial  
-- 📦 **R** (o tu lenguaje principal de análisis, ajústalo si usaste otro)  
+- 📦 **R**  
   - Paquete **`spNetwork`** para KDE sobre red vial  
 - 🧪 Librerías para análisis estadístico y espacial  
-- 📊 Herramientas de visualización / BI (por ejemplo, Tableau, Power BI, Shiny, etc. – ajusta según tu caso)
+- 📊 **d3.js** para visualización interactiva  
+- 🌐 **HTML/CSS/JavaScript** para la construcción de la interfaz del tablero
 
 ---
 
 ## 📂 Estructura del repositorio
 
-Ejemplo de estructura (ajusta a tu repo real):
-
 ```text
 .
-├── data/
-│   ├── raw/                # Datos originales (INEGI, OSM, fiscalías)
-│   └── processed/          # Red vial limpia y datos procesados
-├── src/
-│   ├── 01_preprocesamiento_red.R
-│   ├── 02_kde_red_vial.R
-│   ├── 03_getis_ord.R
-│   └── utils/
-├── dashboards/
-│   └── tablero_homicidios/ # Archivos del tablero (si aplica)
+├── estilos/
+│   ├── general.css
+│   └── mapa.css
+├── imagenes/
+├── scripts/
+│   ├── capa.js
+│   ├── card-capas.js
+│   ├── eventos_selector.js
+│   ├── footer.js
+│   ├── geocoder.js
+│   ├── header.js
+│   ├── main.js
+│   ├── mapa_config.js
+│   └── restablecer.js
+├── scripts_r/
+│   ├── crime_analysis.R
+│   └── funciones.R
 ├── docs/
 │   └── metodologia.md
+├── index.html
 └── README.md
