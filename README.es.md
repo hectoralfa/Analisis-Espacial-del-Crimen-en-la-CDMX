@@ -1,3 +1,5 @@
+🌎 Language: [English](README.md) | [Spanish](README.es.md)
+
 # Análisis Espacial del Crimen en la CDMX
 
 Análisis geoespacial de delitos en la Ciudad de México utilizando KDE sobre red vial y Getis-Ord Gi*.  
