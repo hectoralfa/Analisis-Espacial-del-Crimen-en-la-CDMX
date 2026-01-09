@@ -1,4 +1,4 @@
-# Spatial-Crime-Analysis-CDMX
+# Análisis Espacial del Crimen en la CDMX
 
 Análisis geoespacial de delitos en la Ciudad de México utilizando KDE sobre red vial y Getis-Ord Gi*.  
 El proyecto genera mapas de **hotspots** y **coldspots** de crimen a partir de puntos de robo, empleando una metodología de análisis espacial en redes urbanas.
