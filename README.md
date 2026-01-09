@@ -10,11 +10,11 @@ This project generates **hotspot** and **coldspot** maps of crime from robbery e
 ## 🚨 Interactive Dashboard
 
 > 📊 **Live interactive dashboard:**
-> 👉 [🔗 CLICK HERE TO OPEN THE DASHBOARD](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
+> 👉 [🔗 CLICK HERE TO OPEN THE DASHBOARD](https://hectoralfa.github.io/Analisis-Espacial-del-Crimen-en-la-CDMX/)
 
 Or use this button:
 
-[![Open interactive dashboard](https://img.shields.io/badge/Open%20dashboard-Interactive-blue?style=for-the-badge\&logo=Tableau)](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
+[![Open interactive dashboard](https://img.shields.io/badge/Open%20dashboard-Interactive-blue?style=for-the-badge\&logo=Tableau)](https://hectoralfa.github.io/Analisis-Espacial-del-Crimen-en-la-CDMX/)
 
 ---
 
