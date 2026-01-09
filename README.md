@@ -1,180 +1,179 @@
-# Análisis Espacial del Crimen en la CDMX
+🌎 Language: English | [Español](README.es.md)
 
-Análisis geoespacial de delitos en la Ciudad de México utilizando KDE sobre red vial y Getis-Ord Gi*.  
-El proyecto genera mapas de **hotspots** y **coldspots** de crimen a partir de puntos de robo, empleando una metodología de análisis espacial en redes urbanas.
+# Spatial Crime Analysis in Mexico City
 
----
-
-## 🚨 Tablero interactivo
-
-> 📊 **Tablero interactivo disponible aquí:**  
-> 👉 [🔗 HAZ CLIC PARA VER EL TABLERO](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
-
-o utiliza este botón:
-
-[![Ver tablero interactivo](https://img.shields.io/badge/Ver%20tablero-Interactivo-blue?style=for-the-badge&logo=Tableau)](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
+Geospatial analysis of crime in Mexico City using **network-based KDE** and **Getis-Ord Gi***.
+This project generates **hotspot** and **coldspot** maps of crime from robbery events, following a **network-constrained spatial analysis** methodology.
 
 ---
 
-## 🧩 Descripción general
+## 🚨 Interactive Dashboard
 
-Este proyecto analiza la **distribución espacial de delitos de robo en la Ciudad de México** utilizando la **red vial** como soporte principal. A través de técnicas de:
+> 📊 **Live interactive dashboard:**
+> 👉 [🔗 CLICK HERE TO OPEN THE DASHBOARD](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
 
-- Análisis de red vial  
-- Segmentación en *lixels*  
-- Representación como grafo  
-- **Kernel Density Estimation (KDE)** sobre red  
-- Estadístico **Getis-Ord Gi\*** para identificación de *hotspots*  
+Or use this button:
 
-se construye un **tablero interactivo** que permite explorar zonas con mayor riesgo en los robos más comunes:  
-**robo a transporte/pasajero, robo en vía pública y robo a negocio** a lo largo de las vialidades de la CDMX.
-
-El objetivo es aportar una herramienta útil para:
-
-- **Diseño y evaluación de políticas públicas**
-- **Áreas de seguridad, análisis de riesgo y planeación urbana**
+[![Open interactive dashboard](https://img.shields.io/badge/Open%20dashboard-Interactive-blue?style=for-the-badge\&logo=Tableau)](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
 
 ---
 
-## 🎯 Objetivo del proyecto
+## 🧩 Overview
 
-Desarrollar una **herramienta digital geoespacial** que:
+This project analyzes the **spatial distribution of robbery crimes in Mexico City** using the **road network** as the primary spatial support. Through the use of:
 
-- Recopile, procese y analice información sobre **redes viales y delitos de robo**.  
-- Estime la **concentración de eventos delictivos** sobre la red vial, no solo sobre el espacio continuo.  
-- Identifique **tramos de calle** con riesgo elevado mediante técnicas estadísticas (Getis-Ord Gi\*).  
-- Permita **visualizar los resultados** de forma clara y accesible mediante un **tablero interactivo**.
+* Road network analysis
+* Lixel-based segmentation
+* Graph representations
+* **Network-based Kernel Density Estimation (KDE)**
+* **Getis-Ord Gi*** statistic for hotspot detection
 
-> 🔗 Acceso rápido: [Ver tablero interactivo](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
+an **interactive dashboard** is built to explore high-risk areas for the most common robbery categories:
+**public transportation robbery, street robbery, and business robbery** across Mexico City’s road network.
 
----
+The main goal is to provide a useful tool for:
 
-## 🧠 Contexto y motivación
-
-El estudio del crimen y la violencia requiere una mirada **integral** que combine:
-
-- Factores **sociales y económicos**
-- Características del **entorno urbano**
-- Estructura y conectividad de la **red vial**
-
-En lugar de analizar solo puntos en un mapa, este proyecto considera **por dónde se mueve la vida cotidiana: las calles y carreteras**. Esto permite:
-
-- Estimar mejor la **exposición al riesgo**  
-- Detectar **corredores de violencia**  
-- Apoyar decisiones de **seguridad y planeación urbana** con evidencia espacial.
+* **Public policy design and evaluation**
+* **Security analytics, risk assessment, and urban planning**
 
 ---
 
-## 🗺️ Análisis de la red vial
+## 🎯 Project Objective
 
-La base del proyecto es la **red vial de la CDMX**, construida a partir de:
+To develop a **geospatial digital tool** that:
 
-- Información del **INEGI**  
+* Collects, processes, and analyzes **road network data and robbery events**
+* Estimates the **concentration of criminal events along the network**, not just in continuous space
+* Identifies **high-risk street segments** using statistical methods (Getis-Ord Gi*)
+* Enables **clear and accessible visualization** through an **interactive dashboard**
 
-Se realiza un preprocesamiento para:
-
-- Corregir segmentos desconectados  
-- Homogeneizar la red  
-- Preparar los datos para el análisis sobre *lixels* y grafos
-
----
-
-## 📏 Lixels: segmentando la red
-
-Una vez limpia la red, se divide en **segmentos pequeños y uniformes** llamados *lixels* (line + pixel).
-
-¿Por qué es útil?
-
-- Permite analizar la red a una escala más **fina y homogénea**.  
-- Facilita calcular **densidades de robos por tramo**.  
-- Ayuda a localizar con mayor precisión **en qué parte de una calle se concentran los eventos**.
-
-Cada lixel se convierte en una unidad de análisis sobre la cual se calculan indicadores de riesgo.
+> 🔗 Quick access: [Open interactive dashboard](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
 
 ---
 
-## 🔗 Representación como grafo
+## 🧠 Context and Motivation
 
-La red vial también se representa como un **grafo**:
+The study of crime and violence requires an **integrated perspective** that combines:
 
-- **Nodos** → cruces o intersecciones  
-- **Aristas** → tramos de calle entre intersecciones  
+* **Social and economic** factors
+* Characteristics of the **urban environment**
+* The structure and connectivity of the **road network**
 
-Esta representación permite:
+Instead of analyzing only point patterns, this project focuses on **where daily life actually happens: streets and roads**. This allows for:
 
-- Modelar la **conectividad** de la ciudad  
-- Entender cómo se pueden **propagar fenómenos** a lo largo de la red  
-- Integrar métricas de red (distancias, accesibilidad, rutas mínimas, etc.)
-
----
-
-## 📈 Kernel Density Estimation (KDE) sobre la red vial
-
-Para analizar si los robos se concentran en ciertas zonas, se utiliza **Kernel Density Estimation (KDE)**, pero en lugar de aplicarlo al espacio continuo, se aplica:
-
-> ✅ **Directamente sobre la red vial**, utilizando los *lixels* como soporte.
-
-### ¿Qué hace KDE en este proyecto?
-
-- Cada evento de robo genera una “mancha” de influencia sobre la red.  
-- Si varias manchas se superponen en un mismo tramo, se estima una **mayor densidad de robos**.  
-- El resultado es un mapa de **intensidad de robos por tramo de calle**.
-
-Se consideran:
-
-- **Ancho de banda (*bandwidth*)**: controla el tamaño de la mancha.  
-- **Tipo de kernel**: en este caso, se utiliza el **kernel de Epanechnikov**, que:
-  - Minimiza el **error cuadrático medio integrado (MISE)**  
-  - Tiene **soporte compacto**, lo que ayuda a reducir el costo computacional.
+* More accurate **risk exposure estimation**
+* Detection of **crime corridors**
+* Evidence-based **urban safety and planning decisions**
 
 ---
 
-## 🔥 Identificación de hotspots: Getis-Ord Gi\*
+## 🗺️ Road Network Analysis
 
-KDE muestra dónde hay **concentraciones altas**, pero no dice si estas son **estadísticamente significativas**.
+The core of the project is the **road network of Mexico City**, built using:
 
-Para eso se utiliza el estadístico **Getis-Ord Gi\*** sobre los lixels, con el fin de:
+* Data from **INEGI** (Mexico’s national statistics agency)
 
-- Distinguir entre zonas que solo “parecen” densas  
-- Y aquellas que, **estadísticamente**, tienen **muchos más robos de lo esperado** en comparación con sus vecinos.
+The network is preprocessed to:
 
-El resultado se visualiza en forma de:
-
-- 🔴 **Zonas calientes (hot spots)**: tramos con concentración significativamente alta  
-- 🔵 **Zonas frías (cold spots)**: tramos con concentración significativamente baja  
-
-Estos resultados alimentan el **tablero interactivo** para una interpretación más intuitiva.
+* Fix disconnected segments
+* Homogenize topology
+* Prepare the data for lixel-based and graph-based analysis
 
 ---
 
-## 🧪 Datos utilizados
+## 📏 Lixels: Network Segmentation
 
-La base de delitos se construyó a partir de:
+Once cleaned, the network is divided into small, uniform segments called **lixels** (line + pixel).
 
-- Registros de las carpetas de investigación de la **Fiscalía de la Ciudad de México**  
-- Incluye **tres tipos de robo:** robo a transeúnte, robo a pasajero y robo a negocio  
-- Cobertura: **Ciudad de México**  
-- Periodo: **enero–diciembre de 2023**  
+### Why is this useful?
 
-La red vial proviene de:
+* Enables **fine-grained and homogeneous** analysis
+* Facilitates computing **crime densities per segment**
+* Improves localization of **where exactly crimes concentrate**
 
-- **INEGI** – [https://www.inegi.org.mx](https://www.inegi.org.mx)
-
----
-
-## 🧮 Herramientas y tecnologías
-
-Algunas de las herramientas utilizadas:
-
-- 📦 **R**  
-  - Paquete **`spNetwork`** para KDE sobre red vial  
-- 🧪 Librerías para análisis estadístico y espacial  
-- 📊 **d3.js** para visualización interactiva  
-- 🌐 **HTML/CSS/JavaScript** para la construcción de la interfaz del tablero
+Each lixel becomes an individual analytical unit for risk estimation.
 
 ---
 
-## 📂 Estructura del repositorio
+## 🔗 Graph Representation
+
+The road network is also represented as a **graph**:
+
+* **Nodes** → intersections
+* **Edges** → street segments
+
+This representation allows:
+
+* Modeling **urban connectivity**
+* Understanding how phenomena **propagate through the network**
+* Integrating graph-based metrics (distances, accessibility, shortest paths, etc.)
+
+---
+
+## 📈 Network-based Kernel Density Estimation (KDE)
+
+To analyze whether crimes concentrate in specific areas, this project uses **Kernel Density Estimation (KDE)**, but instead of applying it to continuous space, it is applied:
+
+> ✅ **Directly on the road network**, using lixels as the spatial support.
+
+### What does KDE do here?
+
+* Each crime event generates a localized influence over the network
+* Overlapping influences increase the estimated density
+* The result is a **street-segment-level crime intensity map**
+
+The method considers:
+
+* **Bandwidth**: controls the size of the influence area
+* **Kernel type**: Epanechnikov kernel is used because it:
+
+  * Minimizes the **Mean Integrated Squared Error (MISE)**
+  * Has **compact support**, reducing computational cost
+
+---
+
+## 🔥 Hotspot Detection: Getis-Ord Gi*
+
+While KDE shows where high concentrations exist, it does not indicate whether they are **statistically significant**.
+
+To address this, the **Getis-Ord Gi*** statistic is applied to the lixels to:
+
+* Distinguish visually dense areas from
+* Those that are **statistically significant compared to their neighbors**
+
+The results are visualized as:
+
+* 🔴 **Hot spots**: significantly high concentrations
+* 🔵 **Cold spots**: significantly low concentrations
+
+These outputs feed directly into the interactive dashboard.
+
+---
+
+## 🧪 Data Sources
+
+Crime database:
+
+* Investigation records from the **Mexico City Attorney General’s Office**
+* Includes **three robbery categories**: street robbery, public transport robbery, and business robbery
+* Spatial coverage: **Mexico City**
+* Time span: **January–December 2023**
+---
+
+## 🧮 Tools and Technologies
+
+Main tools used:
+
+* 📦 **R**
+
+  * **`spNetwork`** package for network-based KDE
+* Spatial and statistical analysis libraries
+* 📊 **d3.js** for interactive visualizations
+* 🌐 **HTML/CSS/JavaScript** for the dashboard interface
+
+---
+
+## 📂 Repository Structure
 
 ```text
 .
@@ -199,3 +198,48 @@ Algunas de las herramientas utilizadas:
 │   └── metodologia.md
 ├── index.html
 └── README.md
+```
+
+---
+
+## 🎓 Academic Relevance
+
+This project demonstrates:
+
+* Network-constrained spatial crime modeling
+* Integration of KDE with spatial autocorrelation statistics
+* Urban-scale risk modeling
+* Reproducible and modular spatial analysis
+
+Potential extensions:
+
+* Spatio-temporal modeling
+* Cross-city generalization
+* Comparative kernel analysis
+* Integration with socio-economic indicators
+
+---
+
+## 💼 Industry Relevance
+
+This project showcases:
+
+* End-to-end geospatial system design
+* Risk mapping for urban safety
+* Interactive data products
+* Scalable spatial analytics
+
+It can be used as a base for:
+
+* Crime prevention systems
+* Urban risk dashboards
+* Public safety monitoring
+* Smart city analytics
+
+---
+
+## 👤 Author
+
+**Héctor Miguel Olivares García**
+Actuary | Data Scientist | Geospatial & NLP Analytics
+
